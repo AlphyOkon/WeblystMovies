@@ -1,183 +1,80 @@
-// HERO FADE-IN ANIMATION (Webflow-style)
-document.addEventListener("DOMContentLoaded", () => {
-  const hero = document.querySelector(".hero");
-  if (hero) {
-    hero.style.opacity = "0";
-    hero.style.transform = "translateY(20px)";
-    
-    setTimeout(() => {
-      hero.style.transition = "0.8s ease";
-      hero.style.opacity = "1";
-      hero.style.transform = "translateY(0)";
-    }, 100);
+// Simple scroll-based navbar highlight
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  const fromTop = window.scrollY;
+  navLinks.forEach(link => {
+    const section = document.querySelector(link.hash);
+    if (
+      section.offsetTop <= fromTop + 100 &&
+      section.offsetTop + section.offsetHeight > fromTop + 100
+    ) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+});
+/* ========================= */
+/* USER MENU DROPDOWN */
+/* ========================= */
+const userIcon = document.querySelector(".user-icon");
+const userDropdown = document.querySelector(".user-dropdown");
+
+if (userIcon) {
+  userIcon.addEventListener("click", () => {
+    userDropdown.classList.toggle("active");
+  });
+}
+
+/* Close dropdown when clicking outside */
+document.addEventListener("click", (e) => {
+  if (!userIcon.contains(e.target) && !userDropdown.contains(e.target)) {
+    userDropdown.classList.remove("active");
   }
 });
 
-// USER MENU DROPDOWN
-const userMenu = document.querySelector(".user-menu");
-const userIcon = document.querySelector(".user-icon");
+/* ========================= */
+/* SIDEBAR MENU */
+/* ========================= */
+const menuToggle = document.getElementById("menuToggle");
+const sidebarMenu = document.getElementById("sidebarMenu");
 
-userIcon.addEventListener("click", () => {
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    sidebarMenu.classList.toggle("active");
+  });
+}
+
+/* Close sidebar when clicking outside */
+document.addEventListener("click", (e) => {
+  if (!menuToggle.contains(e.target) && !sidebarMenu.contains(e.target)) {
+    sidebarMenu.classList.remove("active");
+  }
+});
+
+/* ========================= */
+/* LOGOUT BUTTON */
+/* ========================= */
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", () => {
+    alert("You have been logged out.");
+    window.location.href = "login.html";
+  });
+}
+
+/* Login Dropdown */
+const userMenu = document.querySelector(".user-menu");
+const userMenuBtn = document.querySelector(".user-menu-btn");
+
+userMenuBtn.addEventListener("click", () => {
   userMenu.classList.toggle("active");
 });
 
-// Close dropdown when clicking outside
 document.addEventListener("click", (e) => {
   if (!userMenu.contains(e.target)) {
     userMenu.classList.remove("active");
   }
 });
 
-// ===============================
-// SEARCH BAR FUNCTIONALITY (find.html only)
-// ===============================
-const searchForm = document.querySelector(".search-bar");
-const searchInput = document.querySelector(".search-bar input");
-
-if (searchForm && searchInput) {
-
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const query = searchInput.value.trim();
-    if (query === "") {
-      alert("Please enter a model, make, or keyword");
-      return;
-    }
-
-    fetchCarData(query);
-    searchInput.value = "";
-  });
-
-  // Input glow effect
-  searchInput.addEventListener("input", () => {
-    if (searchInput.value.length > 0) {
-      searchInput.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.15)";
-    } else {
-      searchInput.style.boxShadow = "none";
-    }
-  });
-}
-
-
-// ===============================
-// FETCH CAR DATA
-// ===============================
-async function fetchCarData(query) {
-
-  const resultBox = document.getElementById("search-result");
-  const spinner = document.getElementById("spinner");
-  const noResults = document.getElementById("no-results");
-
-  if (!resultBox || !spinner || !noResults) return;
-
-  // Reset states
-  resultBox.classList.remove("active");
-  noResults.classList.remove("active");
-
-  // Show spinner
-  spinner.classList.add("active");
-
-  try {
-    const response = await fetch(`https://api.api-ninjas.com/v1/cars?model=${query}`, {
-      headers: { 'X-Api-Key': 'ESBCEhJ4PpvRnU2UsmFkqIXTnGcMbyTHxdN8uBqs' }
-    });
-
-    const data = await response.json();
-
-    // Hide spinner
-    spinner.classList.remove("active");
-
-    if (data.length === 0) {
-      noResults.classList.add("active");
-      return;
-    }
-
-    const car = data[0];
-
-    resultBox.innerHTML = `
-      <div class="car-card">
-        <h3>${car.make} ${car.model}</h3>
-        <p><strong>Year:</strong> ${car.year}</p>
-        <p><strong>Class:</strong> ${car.class}</p>
-      </div>
-    `;
-
-    resultBox.classList.add("active");
-
-  } catch (error) {
-    spinner.classList.remove("active");
-    noResults.innerText = "Error fetching car data.";
-    noResults.classList.add("active");
-  }
-}
-
-
-// ===============================
-// SORTING SECTION (find.html only)
-// ===============================
-const itemsContainer = document.getElementById("items-container");
-const sortSelect = document.getElementById("sort-select");
-
-const items = [
-  { title: "Toyota Camry", date: "2024-05-10" },
-  { title: "Chevrolet Silverado", date: "2024-03-02" },
-  { title: "Lexus RX", date: "2023-12-15" },
-  { title: "Ford F-150", date: "2024-06-01" }
-];
-
-if (itemsContainer && sortSelect) {
-
-  function renderItems(list) {
-    itemsContainer.innerHTML = "";
-
-    list.forEach(item => {
-      const card = document.createElement("div");
-      card.classList.add("item-card");
-
-      card.innerHTML = `
-        <h3 class="item-title">${item.title}</h3>
-        <p class="item-date">Date: ${item.date}</p>
-      `;
-
-      itemsContainer.appendChild(card);
-    });
-  }
-
-  function sortItems(list, mode) {
-    const sorted = [...list];
-
-    if (mode === "az") {
-      sorted.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (mode === "za") {
-      sorted.sort((a, b) => b.title.localeCompare(a.title));
-    } else if (mode === "newest") {
-      sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (mode === "oldest") {
-      sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-    }
-
-    return sorted;
-  }
-
-  sortSelect.addEventListener("change", () => {
-    const mode = sortSelect.value;
-    const sortedList = sortItems(items, mode);
-    renderItems(sortedList);
-  });
-
-  renderItems(items);
-}
-
-
-// ===============================
-// HAMBURGER MENU (works on both pages)
-// ===============================
-const menuToggle = document.getElementById("menuToggle");
-const sidebarMenu = document.getElementById("sidebarMenu");
-
-if (menuToggle && sidebarMenu) {
-  menuToggle.addEventListener("click", () => {
-    sidebarMenu.classList.toggle("active");
-  });
-}
