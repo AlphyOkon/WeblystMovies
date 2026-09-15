@@ -15,6 +15,21 @@ window.addEventListener('scroll', () => {
   });
 });
 /* ========================= */
+/* SCROLL BUTTON */
+/* ========================= */
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const scrollBottomBtn = document.getElementById("scrollBottomBtn");
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  scrollBottomBtn.addEventListener("click", () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  });
+
+
+/* ========================= */
 /* USER MENU DROPDOWN */
 /* ========================= */
 const userIcon = document.querySelector(".user-icon");

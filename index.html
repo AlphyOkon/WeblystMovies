@@ -3,28 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WEBLYST | Build Your Vision</title>
+  <title>WEBLYST | Build Your Digital Vision</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/c28a4ffa77.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="navbar">
-<div class="logo">
-<a href="index.html">
+  <!-- SCROLL BUTTONS -->
+<div class="scroll-buttons">
+  <button id="scrollTopBtn" class="scroll-btn">
+    <i class="fa-solid fa-angle-up"></i>
+  </button>
+
+  <button id="scrollBottomBtn" class="scroll-btn">
+    <i class="fa-solid fa-angle-down"></i>
+  </button>
+</div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+    <a href="index.html">
 <img src="WeblystLogo1.png" alt="Weblyst Logo" class="logo-img"></a>
 </div> 
- <nav>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="aboutus.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-<!-- USER MENU DROPDOWN -->
-<div class="user-menu">
+    <div class="header-actions">
+      <a href="find.html" class="btn-secondary small">Find Project</a>
+      <div class="user-menu">
   <a class="btn-primary user-menu-btn">Log In</a>
 
   <div class="user-dropdown">
@@ -34,82 +49,172 @@
     <a href="settings.html">Settings</a>
     <a href="#" id="logoutBtn">Logout</a>
   </div>
-</div>
+    </div>
   </header>
 
-  
-
-  <section class="hero" id="home">
-    <div class="hero-content">
+  <!-- HERO -->
+  <main>
+    <section class="app-hero" id="home">
       <h1>Build Your Vision with <span class="accent">WEBLYST</span></h1>
-      <p>We create modern, scalable, and innovative digital solutions to help businesses, creators, and dreamers turn their ideas into reality.</p>
-      <div class="hero-buttons">
-        <a href="services.html" class="btn-primary">Get Started</a>
-        <a href="projects" class="btn-secondary">Explore Our Work</a>
+      <p>Your digital ideas brought to life with clean design, modern tech, and powerful performance.</p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#services" class="btn-secondary">Explore Services</a>
       </div>
-    </div>
-    <div class="hero-image">
-      <img src="LaptopWeblyst2.png" alt="WEBLYST Laptop Mockup" />
-    </div>
-  </section>
+    </section>
 
- <section class="services" id="services">
-  <div class="service-item">
-    <i class="fa-solid fa-code"></i>
-    <div>
-      <h3><span class="accent">Web Development</span></h3>
-      <p>Modern, responsive, and high-performance websites built for your success.</p>
-    </div>
-  </div>
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <h2 class="section-title"><span class="accent">SERVICES</span></h2>
+      <p class="section-subtitle">
+        From concept to launch, we craft digital experiences that feel modern, fast, and intentional.
+      </p>
 
-  <div class="service-item">
-    <i class="fa-solid fa-display"></i>
-    <div>
-      <h3><span class="accent">Custom Solutions</span></h3>
-      <p>Tailored digital solutions that fit your unique needs and goals.</p>
-    </div>
-  </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h3>Web Development</h3>
+          <p>Responsive, high‑performance websites built with clean, scalable code.</p>
+        </div>
 
-  <div class="service-item">
-    <i class="fa-solid fa-bolt"></i>
-    <div>
-      <h3><span class="accent">Fast & Reliable</span></h3>
-      <p>Built with clean code, optimized for speed and performance.</p>
-    </div>
-  </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fa-solid fa-display"></i>
+          </div>
+          <h3>Custom Solutions</h3>
+          <p>Tailored digital products that fit your brand, workflow, and goals.</p>
+        </div>
 
-  <div class="service-item">
-    <i class="fa-solid fa-shield"></i>
-    <div>
-      <h3><span class="accent">Ongoing Support</span></h3>
-      <p>We’re here for the long run with updates, maintenance, and guidance.</p>
-    </div>
-  </div>
-</section>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3>Fast & Reliable</h3>
+          <p>Optimized for speed, accessibility, and long‑term maintainability.</p>
+        </div>
 
-  <section class="about" id="about">
-    <div class="about-text">
-      <h2>Turning Ideas Into Digital Reality</h2>
-      <p>WEBLYST is a forward-thinking tech brand focused on building high-quality websites and digital experiences. We believe in creativity, innovation, and the power of technology to make a difference.</p>
-      <a href="#" class="btn-secondary">Learn More</a>
-    </div>
-    <div class="about-stats">
-      <div class="stat"><h3>100+</h3><p>Projects Completed</p></div>
-      <div class="stat"><h3>50+</h3><p>Happy Clients</p></div>
-      <div class="stat"><h3>3+</h3><p>Years of Experience</p></div>
-    </div>
-  </section>
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fa-solid fa-shield"></i>
+          </div>
+          <h3>Ongoing Support</h3>
+          <p>Updates, improvements, and guidance as your project grows.</p>
+        </div>
+      </div>
+    </section>
 
-  <footer class="footer">
-    <img src="WeblystLogo1.png" alt="Weblyst Logo" class="logo-img"></a>
-    <p>© 2026 WEBLYST. All rights reserved.</p>
-    <div class="socials">
-      <a href="#">LinkedIn</a>
-      <a href="#">Twitter</a>
-      <a href="#">GitHub</a>
-    </div>
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="section-title"><span class="accent">PROJECTS</span></h2>
+      <p class="section-subtitle">
+        A snapshot of the digital experiences we've crafted for brands, creators, and businesses.
+      </p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="images/project1.jpg" alt="Portfolio Website">
+          <div class="project-body">
+            <h3>Portfolio Website</h3>
+            <p>Clean, modern portfolio for a creative entrepreneur, focused on storytelling and visuals.</p>
+            <a href="#" class="project-btn">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/project2.jpg" alt="E‑Commerce Store">
+          <div class="project-body">
+            <h3>E‑Commerce Store</h3>
+            <p>High‑performance storefront with intuitive navigation and secure checkout.</p>
+            <a href="#" class="project-btn">View Project</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/project3.jpg" alt="Landing Page">
+          <div class="project-body">
+            <h3>Business Landing Page</h3>
+            <p>Conversion‑focused landing page designed to turn visitors into clients.</p>
+            <a href="#" class="project-btn">View Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="about-inner">
+        <div class="about-text">
+          <h2>Turning Ideas Into Digital Reality</h2>
+          <p>
+            WEBLYST is a forward‑thinking brand focused on building high‑quality websites and digital experiences.
+            We believe in creativity, innovation, and the power of technology to make a difference.
+          </p>
+          <a href="#contact" class="btn-secondary">Work With Us</a>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat">
+            <h3>100+</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="stat">
+            <h3>50+</h3>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat">
+            <h3>3+</h3>
+            <p>Years of Experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="section-title"><span class="accent">CONTACT</span></h2>
+      <p class="section-subtitle">
+        Ready to start something? Share your idea and we’ll help shape it into a digital product.
+      </p>
+
+      <div class="contact-grid">
+        <form class="contact-form">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="form-row">
+            <label for="message">Project Details</label>
+            <textarea id="message" rows="4" placeholder="Tell us about your project..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary full">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+          <h3>Let’s build something.</h3>
+          <p>We respond within 24–48 hours with next steps and a clear roadmap.</p>
+          <ul>
+            <li><span class="accent">Email:</span> hello@weblyst.dev</li>
+            <li><span class="accent">Location:</span> Riverside, CA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2026 WEBLYST. Crafted with clean code and intentional design.</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
