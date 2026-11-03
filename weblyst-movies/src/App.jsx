@@ -16,7 +16,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />}></Route> 
-         <Route path="/Header" element={<Headrer />}></Route> 
+         <Route path="/Header" element={<Header />}></Route> 
         <Route path="/moviedetails" element={<MovieDetails />}></Route>
           <Route path="/moviedetails" element={<MovieDetails />}></Route>
       </Routes>
@@ -28,3 +28,5 @@ function App() {
     </div>
   );
 }
+
+export default App;
