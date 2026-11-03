@@ -5,6 +5,7 @@ import Header from './components/Header.jsx';
 import MovieDetails from './components/MovieDetails.jsx';
 import MovieCard from './components/MovieCard.jsx';
 import Footer from './components/Footer.jsx';
+import { Routes, Route } from 'react-router-dom';
 
 
 
@@ -21,7 +22,6 @@ function App() {
           <Route path="/moviedetails" element={<MovieDetails />}></Route>
       </Routes>
 
-      <MovieCard />
 
       <Footer />
 
